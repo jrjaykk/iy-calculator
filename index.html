@@ -1,1 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090909">
 
+    <title>IY Calculator</title>
+
+    <meta name="description" content="IY Calculator - A premium offline scientific calculator by Jarry.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="brand">
+                <div class="brand-logo">IY</div>
+                <div class="brand-info">
+                    <h1>IY Calculator</h1>
+                    <p>BY JARRY</p>
+                </div>
+            </div>
+
+            <button class="history-toggle" id="historyToggle" aria-label="Toggle history">
+                <span>↺</span>
+            </button>
+        </header>
+
+        <!-- Main Calculator -->
+        <main class="calculator">
+
+            <!-- Mode Selector -->
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="basic">
+                    Basic
+                </button>
+
+                <button class="mode-btn" data-mode="scientific">
+                    Scientific
+                </button>
+            </div>
+
+            <!-- Display -->
+            <section class="display">
+
+                <div class="display-top">
+                    <span id="displayMode">BASIC MODE</span>
+                    <span id="memoryIndicator"></span>
+                </div>
+
+                <div class="expression" id="expression">
+                    0
+                </div>
+
+                <div class="result" id="result">
+                    0
+                </div>
+
+            </section>
+
+            <!-- Scientific Buttons -->
+            <section class="scientific-keys" id="scientificKeys">
+
+                <button data-action="function" data-value="sin">sin</button>
+                <button data-action="function" data-value="cos">cos</button>
+                <button data-action="function" data-value="tan">tan</button>
+                <button data-action="function" data-value="log">log</button>
+                <button data-action="function" data-value="ln">ln</button>
+
+                <button data-action="function" data-value="sqrt">√</button>
+                <button data-action="function" data-value="square">x²</button>
+                <button data-action="function" data-value="power">xʸ</button>
+                <button data-action="constant" data-value="pi">π</button>
+                <button data-action="constant" data-value="e">e</button>
+
+                <button data-action="function" data-value="factorial">n!</button>
+                <button data-action="bracket" data-value="(">(</button>
+                <button data-action="bracket" data-value=")">)</button>
+                <button data-action="function" data-value="inverse">1/x</button>
+                <button data-action="function" data-value="percent">%</button>
+
+            </section>
+
+            <!-- Basic Calculator Keys -->
+            <section class="calculator-keys">
+
+                <button class="key utility" data-action="clear">AC</button>
+                <button class="key utility" data-action="delete">DEL</button>
+                <button class="key utility" data-action="sign">+/-</button>
+                <button class="key operator" data-value="/" data-action="operator">÷</button>
+
+                <button class="key" data-value="7" data-action="number">7</button>
+                <button class="key" data-value="8" data-action="number">8</button>
+                <button class="key" data-value="9" data-action="number">9</button>
+                <button class="key operator" data-value="*" data-action="operator">×</button>
+              <button class="key" data-value="4" data-action="number">4</button>
+                <button class="key" data-value="5" data-action="number">5</button>
+                <button class="key" data-value="6" data-action="number">6</button>
+                <button class="key operator" data-value="-" data-action="operator">−</button>
+
+                <button class="key" data-value="1" data-action="number">1</button>
+                <button class="key" data-value="2" data-action="number">2</button>
+                <button class="key" data-value="3" data-action="number">3</button>
+                <button class="key operator" data-value="+" data-action="operator">+</button>
+
+                <button class="key" data-value="0" data-action="number">0</button>
+                <button class="key" data-action="decimal">.</button>
+                <button class="key equal" data-action="calculate">=</button>
+
+            </section>
+
+        </main>
+
+        <!-- History Panel -->
+        <aside class="history-panel" id="historyPanel">
+
+            <div class="history-header">
+                <h2>History</h2>
+                <button id="clearHistory">Clear</button>
+            </div>
+
+            <div class="history-list" id="historyList">
+                <p class="empty-history">No calculations yet.</p>
+            </div>
+
+        </aside>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <span>IY Calculator</span>
+            <span>Made by Jarry</span>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
