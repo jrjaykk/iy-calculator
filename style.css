@@ -602,3 +602,20 @@ button:active {
     }
 }
 
+/* Compact Mobile Calculator Header */
+@media (max-width: 600px) {
+    .header .brand {
+        display: none !important;
+    }
+
+    .header {
+        min-height: 55px;
+        height: 55px;
+        justify-content: flex-start;
+        padding: 8px 20px;
+    }
+
+    .header-space {
+        display: none;
+    }
+}
