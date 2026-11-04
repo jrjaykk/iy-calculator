@@ -13,6 +13,8 @@ const modeButtons = document.querySelectorAll(".mode-btn");
 
 const historyToggle = document.getElementById("historyToggle");
 const historyPanel = document.getElementById("historyPanel");
+const historyOverlay = document.getElementById("historyOverlay");
+const closeHistoryButton = document.getElementById("closeHistory");
 const historyList = document.getElementById("historyList");
 const clearHistoryButton = document.getElementById("clearHistory");
 
@@ -364,12 +366,18 @@ function addInput(value, type) {
     }
 
     else if (type === "bracket") {
-        if (value === "(" && expression.endsWith(")")) {
+    const openCount = (expression.match(/\(/g) || []).length;
+    const closeCount = (expression.match(/\)/g) || []).length;
+
+    if (openCount > closeCount && /[\d)!%]$/.test(expression)) {
+        expression += ")";
+    } else {
+        if (expression.endsWith(")")) {
             expression += "*";
         }
-
-        expression += value;
+        expression += "(";
     }
+}
 
     else if (type === "constant") {
         expression += value;
@@ -571,9 +579,62 @@ scientificKeys.addEventListener("click", event => {
 
 // HISTORY PANEL
 
-historyToggle.addEventListener("click", () => {
-    historyPanel.classList.toggle("show");
+/* HISTORY POPUP & NAVIGATION */
+
+let historyNavigationActive = false;
+
+function openHistory() {
+    historyOverlay.classList.add("show");
+    historyPanel.classList.add("show");
+
+    historyToggle.setAttribute("aria-expanded", "true");
+
+    if (!historyNavigationActive) {
+        historyNavigationActive = true;
+
+        window.history.pushState(
+            { iyHistory: true },
+            "",
+            "#history"
+        );
+    }
+}
+
+function closeHistory(fromBack = false) {
+    if (!historyOverlay.classList.contains("show")) return;
+
+    historyOverlay.classList.remove("show");
+    historyPanel.classList.remove("show");
+
+    historyToggle.setAttribute("aria-expanded", "false");
+
+    if (historyNavigationActive) {
+        historyNavigationActive = false;
+
+        if (!fromBack && window.location.hash === "#history") {
+            window.history.back();
+        }
+    }
+}
+
+historyToggle.addEventListener("click", openHistory);
+
+closeHistoryButton.addEventListener("click", () => {
+    closeHistory();
 });
+
+historyOverlay.addEventListener("click", event => {
+    if (event.target === historyOverlay) {
+        closeHistory();
+    }
+});
+
+window.addEventListener("popstate", () => {
+    if (historyNavigationActive) {
+        closeHistory(true);
+    }
+});
+
 
 // KEYBOARD SUPPORT
 
@@ -602,8 +663,12 @@ document.addEventListener("keydown", event => {
     }
 
     else if (key === "Escape") {
+    if (historyOverlay.classList.contains("show")) {
+        closeHistory();
+    } else {
         clearCalculator();
     }
+}
 
     else if (key === "(" || key === ")") {
         addInput(key, "bracket");
