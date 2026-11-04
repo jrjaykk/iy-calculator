@@ -337,3 +337,268 @@ button:active {
     }
 }
 
+
+/* =================================
+   IY CALCULATOR - NEW MOBILE DESIGN
+================================= */
+
+/* Header layout */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    min-height: 55px;
+}
+
+.header .brand {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header-space {
+    width: 43px;
+}
+
+.history-toggle {
+    width: 43px;
+    height: 43px;
+    border: none;
+    background: transparent;
+    font-size: 30px;
+    color: #c8c8d0;
+}
+
+/* Calculator background */
+
+.calculator {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 8px 0;
+    border-radius: 0;
+}
+
+/* Display */
+
+.display {
+    min-height: 190px;
+    padding: 20px 8px;
+}
+
+.expression {
+    font-size: 25px;
+}
+
+.result {
+    font-size: clamp(38px, 10vw, 55px);
+}
+
+/* Circular calculator buttons */
+
+.calculator-keys {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 9px;
+    margin-top: 15px;
+}
+
+.key {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    border-radius: 50%;
+    background: #303136;
+    font-size: clamp(20px, 6vw, 28px);
+    padding: 0;
+}
+
+.key.utility {
+    background: #404458;
+    color: #e2e4f0;
+    font-size: clamp(17px, 5vw, 23px);
+}
+
+.key.operator {
+    background: #404458;
+    color: #dce0ff;
+    font-size: 29px;
+}
+
+.key.equal {
+    grid-column: span 1;
+    background: #e4bce2;
+    color: #302036;
+    font-size: 32px;
+}
+
+.key:hover {
+    filter: brightness(1.2);
+}
+
+.key.equal:hover {
+    background: #f0d2ee;
+}
+
+/* Scientific buttons */
+
+.scientific-keys {
+    gap: 7px;
+}
+
+.scientific-keys button {
+    border-radius: 20px;
+}
+
+/* History popup overlay */
+
+.history-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: 0.25s ease;
+}
+
+.history-overlay.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Popup box */
+
+.history-panel {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 430px;
+    max-height: 75vh;
+    background: #19191d;
+    border: 1px solid #36363d;
+    border-radius: 24px;
+    padding: 22px;
+
+    transform: translateY(25px) scale(0.97);
+    transition: transform 0.25s ease;
+}
+
+.history-overlay.show .history-panel {
+    transform: translateY(0) scale(1);
+}
+
+/* History heading */
+
+.history-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #33333a;
+}
+
+.history-header h2 {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.history-header button {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #303036;
+    color: white;
+    font-size: 17px;
+}
+
+/* History list */
+
+.history-list {
+    overflow-y: auto;
+    flex: 1;
+    min-height: 100px;
+    max-height: 50vh;
+    padding-top: 15px;
+}
+
+.history-item {
+    padding: 15px;
+    background: #242429;
+    border: 1px solid #33333a;
+    border-radius: 13px;
+    text-align: right;
+    cursor: pointer;
+}
+
+.history-expression {
+    color: #92929c;
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+
+.history-result {
+    color: #fff;
+    font-size: 21px;
+}
+
+.empty-history {
+    color: #888;
+    text-align: center;
+    padding: 30px 10px;
+}
+
+/* Clear history */
+
+.history-footer {
+    padding-top: 15px;
+    border-top: 1px solid #33333a;
+}
+
+.history-footer button {
+    width: 100%;
+    padding: 13px;
+    border-radius: 12px;
+    background: #303036;
+    color: #fff;
+    font-size: 13px;
+}
+
+/* Mobile adjustments */
+
+@media (max-width: 480px) {
+
+    body {
+        padding: 15px 8px;
+    }
+
+    .app-container {
+        max-width: 100%;
+    }
+
+    .header {
+        margin-bottom: 15px;
+    }
+
+    .display {
+        min-height: 180px;
+    }
+
+    .calculator-keys {
+        gap: 7px;
+    }
+
+    .footer {
+        margin-top: 12px;
+    }
+}
+
