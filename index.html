@@ -18,18 +18,22 @@
 
         <!-- Header -->
         <header class="header">
-            <div class="brand">
-                <div class="brand-logo">IY</div>
-                <div class="brand-info">
-                    <h1>IY Calculator</h1>
-                    <p>BY JARRY</p>
-                </div>
-            </div>
 
-            <button class="history-toggle" id="historyToggle" aria-label="Toggle history">
-                <span>↺</span>
-            </button>
-        </header>
+    <button class="history-toggle" id="historyToggle" aria-label="Open history">
+        ↶
+    </button>
+
+    <div class="brand">
+        <div class="brand-logo">IY</div>
+        <div class="brand-info">
+            <h1>IY Calculator</h1>
+            <p>BY JARRY</p>
+        </div>
+    </div>
+
+    <div class="header-space"></div>
+
+</header>
 
         <!-- Main Calculator -->
         <main class="calculator">
@@ -89,46 +93,56 @@
             <!-- Basic Calculator Keys -->
             <section class="calculator-keys">
 
-                <button class="key utility" data-action="clear">AC</button>
-                <button class="key utility" data-action="delete">DEL</button>
-                <button class="key utility" data-action="sign">+/-</button>
-                <button class="key operator" data-value="/" data-action="operator">÷</button>
+    <button class="key utility" data-action="clear">AC</button>
+    <button class="key utility" data-action="bracket" data-value="(">( )</button>
+    <button class="key utility" data-action="function" data-value="percent">%</button>
+    <button class="key operator" data-value="/" data-action="operator">÷</button>
 
-                <button class="key" data-value="7" data-action="number">7</button>
-                <button class="key" data-value="8" data-action="number">8</button>
-                <button class="key" data-value="9" data-action="number">9</button>
-                <button class="key operator" data-value="*" data-action="operator">×</button>
-              <button class="key" data-value="4" data-action="number">4</button>
-                <button class="key" data-value="5" data-action="number">5</button>
-                <button class="key" data-value="6" data-action="number">6</button>
-                <button class="key operator" data-value="-" data-action="operator">−</button>
+    <button class="key" data-value="7" data-action="number">7</button>
+    <button class="key" data-value="8" data-action="number">8</button>
+    <button class="key" data-value="9" data-action="number">9</button>
+    <button class="key operator" data-value="*" data-action="operator">×</button>
 
-                <button class="key" data-value="1" data-action="number">1</button>
-                <button class="key" data-value="2" data-action="number">2</button>
-                <button class="key" data-value="3" data-action="number">3</button>
-                <button class="key operator" data-value="+" data-action="operator">+</button>
+    <button class="key" data-value="4" data-action="number">4</button>
+    <button class="key" data-value="5" data-action="number">5</button>
+    <button class="key" data-value="6" data-action="number">6</button>
+    <button class="key operator" data-value="-" data-action="operator">−</button>
 
-                <button class="key" data-value="0" data-action="number">0</button>
-                <button class="key" data-action="decimal">.</button>
-                <button class="key equal" data-action="calculate">=</button>
+    <button class="key" data-value="1" data-action="number">1</button>
+    <button class="key" data-value="2" data-action="number">2</button>
+    <button class="key" data-value="3" data-action="number">3</button>
+    <button class="key operator" data-value="+" data-action="operator">+</button>
 
-            </section>
+    <button class="key" data-value="0" data-action="number">0</button>
+    <button class="key" data-action="decimal">.</button>
+    <button class="key utility" data-action="delete">DEL</button>
+    <button class="key equal" data-action="calculate">=</button>
+
+</section>
 
         </main>
 
         <!-- History Panel -->
-        <aside class="history-panel" id="historyPanel">
+       <div class="history-overlay" id="historyOverlay">
 
-            <div class="history-header">
-                <h2>History</h2>
-                <button id="clearHistory">Clear</button>
-            </div>
+    <aside class="history-panel" id="historyPanel">
 
-            <div class="history-list" id="historyList">
-                <p class="empty-history">No calculations yet.</p>
-            </div>
+        <div class="history-header">
+            <h2>Calculation History</h2>
+            <button id="closeHistory" aria-label="Close history">✕</button>
+        </div>
 
-        </aside>
+        <div class="history-list" id="historyList">
+            <p class="empty-history">No calculations yet.</p>
+        </div>
+
+        <div class="history-footer">
+            <button id="clearHistory">Clear History</button>
+        </div>
+
+    </aside>
+
+</div>
 
         <!-- Footer -->
         <footer class="footer">
